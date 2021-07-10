@@ -1,0 +1,9 @@
+.myForm {
+    width: 200px;
+    margin: 200px auto 0;
+}
+
+form input {
+    margin: 10px 0;
+    padding: 10px;
+}
