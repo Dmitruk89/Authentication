@@ -1,15 +1,17 @@
 import React from 'react';
 import './App.css';
-import LoginPage from './pages/LoginPage/LoginPage';
-//import ProfilePage from './pages/ProfilePage/ProfilePage';
+import Page from './pages/Page';
+import {BrowserRouter as Router} from 'react-router-dom';
+
 
 
 function App() {
   return (
-    <div className="App">
-      <LoginPage/>
-      {/* <ProfilePage/> */}
-    </div>
+    <Router>
+      <div className="App">
+        <Page/>
+      </div>
+    </Router>
   );
 }
 

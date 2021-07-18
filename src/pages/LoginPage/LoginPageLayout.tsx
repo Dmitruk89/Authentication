@@ -2,7 +2,18 @@ import styles from './LoginPage.module.css';
 import { Formik } from 'formik';
 import { userData } from '../../interface/auth.interface';
 
-function LoginPage(){
+interface IProps {
+    isFetching: boolean,
+    getUser: (args: userData) => void,
+    user: {
+      name: string,
+      email: string,
+      id: number
+    } | null,
+}
+
+const LoginPageLayout: React.FunctionComponent <IProps> = props => {
+
     return (
         <Formik
        initialValues={{ email: 'user@ozitag.com', password: 'user' }}
@@ -17,40 +28,31 @@ function LoginPage(){
          }
          return errors;
        }}
-       onSubmit={(values, { setSubmitting }) => {
-         setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
-           setSubmitting(false);
-         }, 400);
-       }}
+       onSubmit={async (values) => props.getUser(values)}
      >
        {({
          values,
          errors,
-         touched,
          handleChange,
-         handleBlur,
          handleSubmit,
-         isSubmitting,
-         /* and other goodies */
+         isSubmitting
        }) => (
          <form className={styles.myForm} onSubmit={handleSubmit}>
+           <p>{props.user? props.user.name: 'waiting for user'}</p>
            <input
              type="email"
              name="email"
              onChange={handleChange}
-             onBlur={handleBlur}
              value={values.email}
            />
-           {errors.email && touched.email && errors.email}
+           {errors.email && errors.email}
            <input
              type="password"
              name="password"
              onChange={handleChange}
-             onBlur={handleBlur}
              value={values.password}
            />
-           {errors.password && touched.password && errors.password}
+           {errors.password && errors.password}
            <button type="submit" disabled={isSubmitting}>
              Submit
            </button>
@@ -60,4 +62,4 @@ function LoginPage(){
     )
 }
 
-export default LoginPage;
+export default LoginPageLayout;
