@@ -1,6 +1,7 @@
 import styles from './LoginPage.module.css';
 import { Formik } from 'formik';
 import { userData } from '../../interface/auth.interface';
+import { Button } from '@material-ui/core';
 
 interface IProps {
     isFetching: boolean,
@@ -38,7 +39,6 @@ const LoginPageLayout: React.FunctionComponent <IProps> = props => {
          isSubmitting
        }) => (
          <form className={styles.myForm} onSubmit={handleSubmit}>
-           <p>{props.user? props.user.name: 'waiting for user'}</p>
            <input
              type="email"
              name="email"
@@ -53,9 +53,14 @@ const LoginPageLayout: React.FunctionComponent <IProps> = props => {
              value={values.password}
            />
            {errors.password && errors.password}
-           <button type="submit" disabled={isSubmitting}>
-             Submit
-           </button>
+           <Button 
+            type="submit" 
+            disabled={isSubmitting} 
+            color="primary" 
+            variant="outlined"
+            >
+              Submit
+            </Button>
          </form>
        )}
      </Formik>

@@ -43,7 +43,6 @@ export const getUser = ({ email, password }: userData) => {
       AuthenticateUser({ email, password }).then((data) => {
         localStorage.setItem('accessToken', data.accessToken);
         GetUserData(data.accessToken).then((data) => {
-            console.log(data);
             localStorage.setItem('loggedUser', JSON.stringify(data));
             dispatch(setUserData(data));
             dispatch(toggleIsFetching());
@@ -57,7 +56,6 @@ export const logOutHandler = () => {
       dispatch(logOutUser());
       delete localStorage.accessToken;
       delete localStorage.loggedUser;
-      console.log('log out')
     };
   };
 
