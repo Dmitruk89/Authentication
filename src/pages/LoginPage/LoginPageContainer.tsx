@@ -3,7 +3,7 @@ import LoginPageLayout from './LoginPageLayout';
 import {connect, ConnectedProps} from 'react-redux';
 import React from 'react';
 import {Redirect} from 'react-router-dom';
-import {getUser} from '../../redux/loginPageReducer';
+import {getUser} from '../../redux/AuthReducer';
 import {RootState} from '../../interface/store.interface';
 import {LinearProgress, Box } from '@material-ui/core';
 
@@ -25,8 +25,8 @@ const LoginPageContainer: React.FunctionComponent<ContainerProps> = props => {
 
 const mapStateToProps = (state: RootState) => {
     return { 
-        isFetching: state.loginPage.isFetching,
-        user: state.loginPage.user
+        isFetching: state.auth.isFetching,
+        user: state.auth.user
     }
 }
 

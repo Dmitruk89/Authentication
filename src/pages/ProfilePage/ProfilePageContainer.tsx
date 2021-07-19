@@ -3,7 +3,7 @@ import {connect, ConnectedProps} from 'react-redux';
 import React from 'react';
 import { Redirect } from 'react-router';
 import {RootState} from '../../interface/store.interface';
-import {logOutHandler} from '../../redux/loginPageReducer';
+import {logOutHandler} from '../../redux/AuthReducer';
 
 const ProfilePageContainer: React.FunctionComponent<ContainerProps> = props => {
     if(!props.user){
@@ -19,7 +19,7 @@ const ProfilePageContainer: React.FunctionComponent<ContainerProps> = props => {
 
 const mapStateToProps = (state: RootState) => {
     return {
-        user: state.loginPage.user
+        user: state.auth.user
     }
 }
 

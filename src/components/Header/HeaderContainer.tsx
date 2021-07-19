@@ -13,8 +13,8 @@ const HeaderContainer: React.FunctionComponent<ContainerProps> = props => {
 
 const mapStateToProps = (state: RootState) => {
     return { 
-        isFetching: state.loginPage.isFetching,
-        user: state.loginPage.user
+        isFetching: state.auth.isFetching,
+        user: state.auth.user
     }
 }
 

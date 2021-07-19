@@ -1,7 +1,5 @@
-import {toggleIsFetching, setUserData, logOutUser} from '../redux/loginPageReducer';
-
+import {toggleIsFetching, setUserData, logOutUser} from '../redux/AuthReducer';
 export interface loginState {
-    message: string;
     isFetching: boolean;
     user: { name: string; email: string; id: number; } | null;
 }

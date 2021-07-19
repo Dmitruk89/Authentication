@@ -9,12 +9,11 @@ const LOG_OUT_USER = "LOG_OUT_USER";
 let user: { name: string; email: string; id: number; } = localStorage.loggedUser ? JSON.parse(localStorage.loggedUser) : null;
 
 const defaultState: loginState = {
-    message: 'click CHECK',
     isFetching: false,
     user
 }
 
-const loginPageReducer = (state: loginState = defaultState, action: any):loginState => {
+const authReducer = (state: loginState = defaultState, action: any):loginState => {
     switch (action.type) {
         case TOGGLE_IS_FETCHING:
             return {
@@ -57,10 +56,10 @@ export const logOutHandler = () => {
       delete localStorage.accessToken;
       delete localStorage.loggedUser;
     };
-  };
+};
 
 export const toggleIsFetching = () => ({ type: TOGGLE_IS_FETCHING });
 export const setUserData = (data: object) => ({type: SET_USER_DATA, data});
 export const logOutUser = () => ({type: LOG_OUT_USER});
 
-export default loginPageReducer;
+export default authReducer;
